@@ -1,0 +1,8 @@
+name = "green-fiber-net-api"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "green-fiber-net-db"
+database_id = "PASTE_DATABASE_ID_HERE"
