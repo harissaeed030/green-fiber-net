@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS leads (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ phone TEXT NOT NULL,
+ request_type TEXT NOT NULL,
+ message TEXT NOT NULL,
+ created_at TEXT NOT NULL
+);
