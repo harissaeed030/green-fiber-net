@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Green Fiber Net - reliable high-speed FTTH fiber internet in Latifabad, Hyderabad.">
+<title>Green Fiber Net | Fiber Internet</title>
+<style>
+:root{--green:#0b6b3a;--lime:#32d477;--dark:#08291c;--ink:#17251d;--muted:#617168;--bg:#f5faf6}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{background:var(--dark);color:white;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:21px;color:#fff}.brand span{color:var(--lime)}
+nav a{color:#e8fff0;text-decoration:none;margin:0 8px;font-size:14px}
+.hero{padding:75px 6%;background:linear-gradient(120deg,#073b26,#0d7440);color:white}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.1;margin:0 0 16px}.hero p{max-width:620px;color:#d8f6e4}
+.btn{display:inline-block;background:var(--lime);color:#06351e;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:700;border:0;cursor:pointer}
+section{padding:48px 6%;max-width:1200px;margin:auto}.section-title{text-align:center;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border:1px solid #e0eee4;border-radius:14px;padding:22px;box-shadow:0 5px 20px #0b6b3a0b}
+.card h3{color:var(--green);margin-top:0}.price{font-size:27px;font-weight:800;color:var(--green)}
+form{display:grid;gap:12px;max-width:650px;margin:auto}input,textarea,select{width:100%;padding:13px;border:1px solid #cbdacf;border-radius:8px;font:inherit;background:white}
+footer{background:var(--dark);color:#d9eee1;text-align:center;padding:28px}
+.note{font-size:13px;color:var(--muted)}.status{min-height:24px;font-weight:600}
+@media(max-width:600px){nav{width:100%}nav a{margin:0 10px 0 0}.hero{padding:55px 6%}}
+</style>
+</head>
+<body>
+<header><div class="brand">GREEN <span>FIBER NET</span></div><nav><a href="#home">Home</a><a href="#packages">Packages</a><a href="#services">Services</a><a href="#contact">Contact</a></nav></header>
+<main>
+<section class="hero" id="home" style="max-width:none">
+<h1>Fast. Reliable.<br>Fiber Internet.</h1>
+<p>Enjoy dependable high-speed FTTH internet for your home and business in Unit No. 8, Latifabad, Hyderabad. Contact us for package details and connection availability.</p>
+<a class="btn" href="#contact">Get a New Connection</a> <a class="btn" href="https://wa.me/923061035806" target="_blank" rel="noopener">WhatsApp Support</a>
+</section>
+<section id="packages"><h2 class="section-title">Internet Packages</h2>
+<div class="grid">
+<div class="card"><h3>Starter</h3><div class="price">Contact us</div><p>Affordable internet for everyday browsing.</p></div>
+<div class="card"><h3>Family</h3><div class="price">Contact us</div><p>For streaming, study and multiple devices.</p></div>
+<div class="card"><h3>Premium</h3><div class="price">Contact us</div><p>High-speed option for demanding users.</p></div>
+</div><p class="note">Package speeds, monthly prices and availability confirm karne ke liye Green Fiber Net se rabta karein.</p>
+</section>
+<section id="services"><h2 class="section-title">Our Services</h2><div class="grid">
+<div class="card"><h3>FTTH Internet</h3><p>Fiber-to-the-home connectivity.</p></div><div class="card"><h3>Home & Business</h3><p>Internet solutions for homes, shops and offices.</p></div><div class="card"><h3>Customer Support</h3><p>Connection and service assistance.</p></div>
+</div><p class="note">Customer login, online payment gateway aur admin dashboard aglay development phase mein secure backend ke sath add honge. Filhal support aur payment guidance WhatsApp par available hai.</p></section>
+<section id="contact"><h2 class="section-title">Connection / Complaint Request</h2>
+<form id="leadForm"><input name="name" placeholder="Your name" required><input name="phone" placeholder="Mobile / WhatsApp number" required><select name="requestType"><option>New connection</option><option>Complaint</option><option>Package information</option><option>Other</option></select><textarea name="message" rows="4" placeholder="Area, address or message" required></textarea><button class="btn" type="submit">Submit Request</button><div class="status" id="status"></div></form>
+<p class="note" style="text-align:center">Service Area: Unit No. 8, Latifabad, Hyderabad, Sindh<br>WhatsApp Support: <a href="https://wa.me/923061035806">0306 1035806</a><br>Backend configure hone tak request ke liye WhatsApp use karein.</p>
+</section>
+</main>
+<footer>© <span id="year"></span> Green Fiber Net. All rights reserved.<br><span class="note">Unit No. 8, Latifabad, Hyderabad, Sindh | WhatsApp: 0306 1035806</span></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const API_BASE = "";
+document.getElementById('leadForm').addEventListener('submit',async e=>{
+ e.preventDefault();const status=document.getElementById('status');const data=Object.fromEntries(new FormData(e.target).entries());
+ if(!API_BASE){status.textContent="Backend abhi configure nahi. Barah-e-karam WhatsApp par rabta karein.";return;}
+ status.textContent="Submitting...";
+ try{const r=await fetch(API_BASE+"/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+ const j=await r.json();if(!r.ok)throw new Error(j.error||"Request failed");status.textContent="Request receive ho gayi. Shukriya!";e.target.reset();
+ }catch(err){status.textContent="Submit nahi hua: "+err.message;}
+});
+</script>
+</body></html>
